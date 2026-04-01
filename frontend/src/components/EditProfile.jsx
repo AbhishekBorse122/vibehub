@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Avatar } from './custom/Avatar'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios';
 import { toast } from 'sonner';
 import { Loader2 } from 'lucide-react';
+import { setUser } from '@/store/authSlice';
 
-// Issues
-// 1. update gender not updating quickly.
 const EditProfile = () => {
 
   const imgRef = useRef();
+  const dispatch = useDispatch();
   const {user} = useSelector(store=>store.auth);
 
   const [loading,setLoading] = useState(false);
@@ -52,6 +52,7 @@ const EditProfile = () => {
         withCredentials: true,
       })
       if(res.data.success){
+        dispatch(setUser(res.data?.user));
         toast.success(res.data.message);
       }
     } catch (error) {

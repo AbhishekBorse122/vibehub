@@ -65,8 +65,6 @@ const Leftsidebar = () => {
         else if(tab === 'Logout') logoutHandler();
     }
 
-    console.log(likeNotification);
-
     return (
         <div className='fixed top-0 left-0 z-10 bottom-0 w-[16%] h-screen border-r border-r-gray-300 px-4'>
             <div className='flex flex-col'>

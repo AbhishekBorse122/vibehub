@@ -18,9 +18,8 @@ import axios from 'axios';
 import { toast } from 'sonner';
 import { setPosts, setSelectedPost} from '@/store/postSlice';
 import { RiVerifiedBadgeFill } from "react-icons/ri";
-import { setUser } from '@/store/authSlice';
+import { Link } from 'react-router-dom';
 
-// Implement => unfollow follow bookmark dynamic updates.
 const Post = ({item}) => {
 
   const dispatch = useDispatch();
@@ -119,19 +118,17 @@ const Post = ({item}) => {
   }
 
   console.log(item);
-  console.log(user);
-  console.log(isUserFollowPostOwner);
-
+  
   return (
     <div className='my-8 w-full max-w-sm mx-auto'>
       <div className='flex items-center justify-between'>
-        <div className='flex items-center gap-2'>
+        <Link to={`/profile/${item?.author?._id}`} className='flex items-center gap-2'>
           <Avatar src={item?.author?.profilePicture} />
           <div className='flex items-center gap-1'>
             <h1>{item?.author?.username}</h1>
             {user?._id === item?.author._id && <RiVerifiedBadgeFill className='text-blue-600' />}
           </div>
-        </div>
+        </Link>
         <Dialog>
           <DialogTrigger>
             <MoreHorizontal className='cursor-pointer' />
