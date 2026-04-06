@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react'
-import Signup from './components/Signup'
-import Login from './components/Login'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Mainlayout from './components/Mainlayout'
-import Home from './components/Home'
-import Profile from './components/Profile'
-import EditProfile from './components/EditProfile'
-import ChatPage from './components/ChatPage'
+// import Mainlayout from './components/Mainlayout'
 import { io } from "socket.io-client";
 import { useDispatch, useSelector } from 'react-redux'
 import { setSocket } from './store/socketSlice'
 import { setOnlineUsers } from './store/chatSlice'
 import { setLikeNotification } from './store/notificationSlice'
-import ProtectedRoute from './components/ProtectedRoute'
+import Login from './features/auth/pages/Login'
+import Signup from './features/auth/pages/Signup'
+import Home from './features/home/pages/Home'
+import Profile from './features/profile/pages/Profile'
+import EditProfile from './features/profile/pages/EditProfile';
+import ChatPage from './features/chat/pages/ChatPage';
+import ProtectedRoute from './app/route/ProtectedRoute';
+import Mainlayout from './app/layouts/Mainlayout';
 
-//10:00
 const router = createBrowserRouter([
   {
     path: '/',
@@ -29,7 +29,6 @@ const router = createBrowserRouter([
       {
         path: '/profile/:id',
         element: <Profile/>,
-        // try to implement the profil/edit here...
       },
       {
         path: '/account/edit',
@@ -51,7 +50,6 @@ const router = createBrowserRouter([
   },
 ])
 
-//11:33
 const App = () => {
 
   const dispatch = useDispatch();

@@ -1,4 +1,3 @@
-import SuggestedUsers from "@/components/SuggestedUsers";
 import { createSlice } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
